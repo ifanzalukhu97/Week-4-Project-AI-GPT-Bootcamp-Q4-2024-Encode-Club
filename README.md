@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Week 3 Project - AI GPT Bootcamp Q4 2024 - Encode Club
 
-## Getting Started
+### Project Description
+This is a web application built using Next.js to generate captivating stories using AI. The application allows users to create and manage characters that will be used in the story generation process. Users can add, edit, and delete characters, each with a name, description, and personality.
 
-First, run the development server:
+### Prerequisites
+1. **Node.js Installation**
+    - Node.js version 18 or later (This project uses Node.js 20)
+    - You can download it from [nodejs.org](https://nodejs.org)
+    - If you use `nvm` and need to make sure you are using Node.js 20, you can run:
+      ```bash
+      nvm use 20
+      ```
+2. **LLM Model Loader**
+   - In this project, we used [Text Generation Web UI](https://github.com/oobabooga/text-generation-webui)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### How to Run the Project
+Follow these steps to run the project locally:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/ifanzalukhu97/Week-3-Project-AI-GPT-Bootcamp-Q4-2024-Encode-Club.git
+   cd Week-3-Project-AI-GPT-Bootcamp-Q4-2024-Encode-Club
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. **Install Dependencies**
+   ```bash
+   npm install
+   ```
 
-## Learn More
+3. **Run LLM Model Loader**
+    - Make sure to use the --api flag because we use a local AI API
+    - For macOS:
+      ```bash
+      ./start_macos.sh --api
+      ```
+    - For Windows:
+      ```bash
+      ./start_windows.sh --api
+      ```
+    - For Linux:
+      ```bash
+      ./start_linux.sh --api
+      ```
 
-To learn more about Next.js, take a look at the following resources:
+4. **Start Development Server**
+   ```bash
+   npm run dev
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+5. **Access the Application**
+    - Open your browser and navigate to [http://localhost:3000](http://localhost:3000)
+    - The application should now be running and ready to use
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Overview / Report
+![Image 1](screenshots/image-01.png)
+![Image 2](screenshots/image-02.png)
+![Image 3](screenshots/image-03.png)
