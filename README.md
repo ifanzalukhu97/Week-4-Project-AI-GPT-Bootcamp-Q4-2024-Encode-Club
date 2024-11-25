@@ -1,4 +1,4 @@
-## Week 3 Project - AI GPT Bootcamp Q4 2024 - Encode Club
+## Week 4 Project - AI GPT Bootcamp Q4 2024 - Encode Club
 
 ### Project Description
 This is a web application built using Next.js to generate captivating stories using AI. The application allows users to create and manage characters that will be used in the story generation process. Users can add, edit, and delete characters, each with a name, description, and personality.
