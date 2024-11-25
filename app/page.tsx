@@ -7,24 +7,6 @@ import { Character } from '@/types'
 
 export default function Chat() {
   const [characters, setCharacters] = useState<Character[]>([
-    {
-      id: 1,
-      name: "Charlie",
-      description: "A clumsy wedding planner who falls in love at every wedding",
-      personality: "Hopeless romantic with terrible luck and perfect comic timing"
-    },
-    {
-      id: 2,
-      name: "Sofia",
-      description: "A successful chef who can't cook when she's in love",
-      personality: "Confident and witty, but becomes hilariously awkward around her crush"
-    },
-    {
-      id: 3,
-      name: "James",
-      description: "A professional matchmaker who can't find his own soulmate",
-      personality: "Great at giving love advice, terrible at taking it, prone to slapstick situations"
-    }
   ]);
   const { messages, append, isLoading } = useChat();
 

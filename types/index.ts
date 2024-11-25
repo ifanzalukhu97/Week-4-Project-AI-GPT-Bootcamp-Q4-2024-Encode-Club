@@ -4,3 +4,8 @@ export interface Character {
     description: string;
     personality: string;
   }
+
+export interface CharacterTableProps {
+    characters: Character[];
+    setCharacters: (characters: Character[]) => void;
+}

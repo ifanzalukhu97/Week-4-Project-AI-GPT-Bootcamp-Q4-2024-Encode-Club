@@ -1,9 +1,12 @@
 import OpenAI from "openai";
 import { OpenAIStream, StreamingTextResponse } from "ai";
 
+// Set to true if you are running the OpenAI API locally / using Text Generation Web UI
+const usingLocalOpenAiApi = false;
+
 const openai = new OpenAI({
-  baseURL: "http://127.0.0.1:5000/v1",
-  apiKey: "",
+  baseURL: usingLocalOpenAiApi ? `http://127.0.0.1:5000/v1` : process.env.OPENAI_API_URL,
+  apiKey: usingLocalOpenAiApi ? "" : process.env.OPENAI_API_KEY,
 });
 
 export const runtime = "edge";
@@ -12,7 +15,7 @@ export async function POST(req: Request) {
   const { messages } = await req.json();
 
   const response = await openai.chat.completions.create({
-    model: "gpt-3.5-turbo",
+    model: "gpt-4o-mini",
     stream: true,
     messages: [
       {

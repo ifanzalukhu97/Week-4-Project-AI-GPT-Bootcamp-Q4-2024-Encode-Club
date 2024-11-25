@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Character } from '@/types'
+import {Character, CharacterTableProps} from '@/types'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -9,11 +9,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
 import { Pencil, Trash2 } from 'lucide-react'
-
-interface CharacterTableProps {
-  characters: Character[];
-  setCharacters: (characters: Character[]) => void;
-}
+import CharacterUpload from "@/components/character-upload";
 
 export function CharacterTable({ characters, setCharacters }: CharacterTableProps) {
   const [editingCharacter, setEditingCharacter] = useState<Character | null>(null)
@@ -45,60 +41,73 @@ export function CharacterTable({ characters, setCharacters }: CharacterTableProp
 
   return (
     <div className="container mx-auto p-4 space-y-8">
-      <Card>
-        <CardHeader>
-          <CardTitle>{editingCharacter ? 'Edit Character' : 'Add New Character'}</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <form onSubmit={(e) => {
-            e.preventDefault()
-            editingCharacter ? updateCharacter() : addCharacter()
-          }} className="space-y-4">
-            <div>
-              <Label htmlFor="name">Name</Label>
-              <Input 
-                id="name"
-                value={editingCharacter ? editingCharacter.name : newCharacter.name}
-                onChange={(e) => editingCharacter 
-                  ? setEditingCharacter({...editingCharacter, name: e.target.value})
-                  : setNewCharacter({...newCharacter, name: e.target.value})
-                }
-                placeholder="Character Name"
-              />
+      <div className="flex space-x-4">
+        <Card className="flex-1">
+          <CardHeader>
+            <CardTitle>{editingCharacter ? 'Edit Character' : 'Add New Character'}</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={(e) => {
+              e.preventDefault()
+              editingCharacter ? updateCharacter() : addCharacter()
+            }} className="space-y-4">
+              <div>
+                <Label htmlFor="name">Name</Label>
+                <Input
+                    id="name"
+                    value={editingCharacter ? editingCharacter.name : newCharacter.name}
+                    onChange={(e) => editingCharacter
+                        ? setEditingCharacter({...editingCharacter, name: e.target.value})
+                        : setNewCharacter({...newCharacter, name: e.target.value})
+                    }
+                    placeholder="Character Name"
+                />
+              </div>
+              <div>
+                <Label htmlFor="description">Description</Label>
+                <Textarea
+                    id="description"
+                    value={editingCharacter ? editingCharacter.description : newCharacter.description}
+                    onChange={(e) => editingCharacter
+                        ? setEditingCharacter({...editingCharacter, description: e.target.value})
+                        : setNewCharacter({...newCharacter, description: e.target.value})
+                    }
+                    placeholder="Character Description"
+                />
+              </div>
+              <div>
+                <Label htmlFor="personality">Personality</Label>
+                <Input
+                    id="personality"
+                    value={editingCharacter ? editingCharacter.personality : newCharacter.personality}
+                    onChange={(e) => editingCharacter
+                        ? setEditingCharacter({...editingCharacter, personality: e.target.value})
+                        : setNewCharacter({...newCharacter, personality: e.target.value})
+                    }
+                    placeholder="Character Personality"
+                />
+              </div>
+              <Button type="submit">{editingCharacter ? 'Update' : 'Add'} Character</Button>
+              {editingCharacter && (
+                  <Button type="button" variant="outline" onClick={() => setEditingCharacter(null)}>
+                    Cancel
+                  </Button>
+              )}
+            </form>
+          </CardContent>
+        </Card>
+
+        <Card className="flex-1">
+          <CardHeader>
+            <CardTitle>Or Upload Characters from Book or Similar Content</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="w-full">
+              <CharacterUpload characters={characters} setCharacters={setCharacters} />
             </div>
-            <div>
-              <Label htmlFor="description">Description</Label>
-              <Textarea 
-                id="description"
-                value={editingCharacter ? editingCharacter.description : newCharacter.description}
-                onChange={(e) => editingCharacter
-                  ? setEditingCharacter({...editingCharacter, description: e.target.value})
-                  : setNewCharacter({...newCharacter, description: e.target.value})
-                }
-                placeholder="Character Description"
-              />
-            </div>
-            <div>
-              <Label htmlFor="personality">Personality</Label>
-              <Input 
-                id="personality"
-                value={editingCharacter ? editingCharacter.personality : newCharacter.personality}
-                onChange={(e) => editingCharacter
-                  ? setEditingCharacter({...editingCharacter, personality: e.target.value})
-                  : setNewCharacter({...newCharacter, personality: e.target.value})
-                }
-                placeholder="Character Personality"
-              />
-            </div>
-            <Button type="submit">{editingCharacter ? 'Update' : 'Add'} Character</Button>
-            {editingCharacter && (
-              <Button type="button" variant="outline" onClick={() => setEditingCharacter(null)}>
-                Cancel
-              </Button>
-            )}
-          </form>
-        </CardContent>
-      </Card>
+          </CardContent>
+        </Card>
+      </div>
 
       <Card>
         <CardHeader>
